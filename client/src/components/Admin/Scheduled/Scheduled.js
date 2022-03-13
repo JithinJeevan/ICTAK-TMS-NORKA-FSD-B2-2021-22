@@ -1,6 +1,6 @@
 import React, {useEffect, useState } from 'react'
 import '../Scheduled/scheduled.css'
-import { Table, TableHead, TableRow, TableCell, TableBody} from '@mui/material';
+import { Table, TableHead, TableRow, TableCell, TableBody,Button} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import Input from '@mui/material/Input';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -98,17 +98,29 @@ async function handleSignOUt(){
   Cookies.set("logs",0);
   navigate("/",{replace:true});
    }
+
+  
+    async function deleteSchedule(e){
+    const id = e.target.id;
+     var res=await axiosJWT.post(`/api/Scheduled/delete/${id}`,{
+       headers: {authorization: "Bearer " + accessToken }
+     });
+     console.log(res);
+     
+     setScheduledtrainers(scheduledtrainers.filter(i=>i._id !== id));
+      }
+    
     return (
         <div className="shfull">
         
-            <h1 className="sh">scheduled trainers</h1>
+            
             <FormControl variant="standard">
             <Input className="searchsh" value={search} style={{width: 300,backgroundColor: "white",paddingLeft: 10,borderRadius: 20}} id="input-with-icon-adornment"
             endAdornment={<InputAdornment><SearchIcon onClick={searching} style={{cursor:'pointer'}}/></InputAdornment>}
             onChange={(event)=>setSearch(event.target.value)}/>
             </FormControl>
 
-            <Table className="shtab" style={{width: 500}}>
+            <Table className="shtab" style={{width: 500,border:1,marginTop:250,marginLeft:250}}>
               <TableHead>
                   <TableRow style={{backgroundColor:'black'}}>
                        <TableCell style={{color:'white'}}>Name</TableCell>
@@ -117,6 +129,7 @@ async function handleSignOUt(){
                        <TableCell style={{color:'white'}}>Start time</TableCell>
                        <TableCell style={{color:'white'}}>End time</TableCell>
                        <TableCell style={{color:'white'}}>Day</TableCell>
+                       <TableCell style={{color:'white'}}></TableCell>
                        <TableCell style={{color:'white'}}></TableCell>
                   </TableRow>
               </TableHead>
@@ -130,6 +143,7 @@ async function handleSignOUt(){
               <TableCell>{i.endtime}</TableCell>
               <TableCell>{i.day}</TableCell>
               <TableCell><BasicModal item={i}></BasicModal></TableCell>
+              <TableCell ><Button variant="contained" color="error" id={i._id} onClick={deleteSchedule}></Button>Delete</TableCell>
               </TableRow>
                   ))}
               </TableBody>

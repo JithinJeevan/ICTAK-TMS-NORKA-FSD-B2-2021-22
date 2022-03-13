@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './approved.css'
-import { Table, TableHead, TableRow, TableCell, TableBody} from '@mui/material';
+import { Table, TableHead, TableRow, TableCell, TableBody, Button} from '@mui/material';
 import { useNavigate } from 'react-router';
 import CustomizedDialogs from '../dialogubox/Dialogu';
 import Allocation from '../allocation/Allocation';
@@ -96,13 +96,15 @@ useEffect(()=>{
          setActive(response.data);     
  } 
  
- async function handleSignOUt(){
-  var res=await axiosJWT.post('/api/logout',{
+ async function deleteApproved(e){
+  const username = e;
+  console.log("Approved username",username);
+  var res=await axiosJWT.post(`/api/approved/delete/${username}`,{
     headers: {authorization: "Bearer " + accessToken }
   });
   console.log(res);
-  Cookies.set("logs",0);
-  navigate("/",{replace:true});
+  setActive(active.filter(i=>i.username !== username))
+  
    }
 
 
@@ -123,6 +125,7 @@ useEffect(()=>{
                        <TableCell style={{color:'white'}}>employment</TableCell>
                        <TableCell style={{color:'white'}}>skills</TableCell>
                        <TableCell style={{color:'white'}}>Allocation</TableCell>
+                       <TableCell style={{color:'white'}}></TableCell>
                   </TableRow>
               </TableHead>
               <TableBody>
@@ -134,6 +137,7 @@ useEffect(()=>{
                     <TableCell>{i.skill+" "}</TableCell>
                     
                     <TableCell><CustomizedDialogs><Allocation item={i}/></CustomizedDialogs></TableCell>
+                    <TableCell ><Button variant="contained" color="error" value={i.username} onClick={(e)=>deleteApproved(e.target.value)}></Button>Delete</TableCell>
                 </TableRow>
                   ))}
               </TableBody>

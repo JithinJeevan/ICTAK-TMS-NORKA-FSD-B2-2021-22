@@ -391,7 +391,28 @@ if(result.length==0){
     }
 })
 
+// Deleting approved user and user schedules
 
+app.post("/api/approved/delete/:name",verify, async (req,res)=>{
+
+  const username = req.params.name;
+  console.log(username);
+  await Register.deleteOne({username:username});
+  await Allocation.deleteMany({username:username});
+  res.send('Delete Successful');
+
+} );
+
+// Deleting Each Schedule
+
+app.post("/api/Scheduled/delete/:id",verify, async (req,res)=>{
+
+  const id = req.params.id;
+  console.log(id);
+  await Allocation.deleteOne({_id:id});
+  res.send('Delete Successful');
+
+} );
 
 
 //checking for allocated time schedules 

@@ -67,7 +67,7 @@ function Logout(props) {
     
   const response = await axiosJWT.post(`/api/logout`,
      {
-     headers: { authorization: "Bearer " + Cookies.get("access") },
+     headers: { authorization: "Bearer " + accessToken },
      
    
    });
