@@ -73,7 +73,7 @@ app.post("/api/refresh", (req, res) => {
   // Access token generating function
   const generateAccessToken = (user) => {
     return jwt.sign({ id: user.id, username: user.username }, "mySecretKey", {
-      expiresIn: "7s",
+      expiresIn: "5s",
     });
   };
   
@@ -309,12 +309,10 @@ app.post("/api/mailer",(req,res)=>{
         html: "<h3>You are approved as ICTAK trainer.Please login with username and password....</h3><br/><table border='1' width='70%' height='100px' style='border-collapse:collapse;'>\
                      <tr style='background-color: black;'>\
                         <th style='color: white;'>Username</th>\
-                        <th style='color: white;'>Password</th>\
                         <th style='color: white;'>Employ type</th>\
                     </tr>\
                  <tr>\
                  <td style='text-align: center'>"+data2+"</td>\
-                 <td style='text-align: center'>"+data3+"</td>\
                  <td style='text-align: center'>"+data4+"</td>\
                    </tr>\
                   </table><br/>"      

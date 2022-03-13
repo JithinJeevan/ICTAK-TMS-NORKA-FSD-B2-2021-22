@@ -23,7 +23,7 @@ function Logout(props) {
  
      const refresh = async () => {
          try {
-         const res = await axios.post("/api/refresh",{ token: Cookies.get("refresh")});
+         const res = await axios.post("/api/refresh",{ token: refreshToken});
          
        
          
