@@ -10,7 +10,7 @@ const nodemailer=require("nodemailer");
 require("dotenv").config();
 
 const app = express();
-const PORT = process.env.PORT || 6233
+const port = process.env.PORT || 6233;
 let refreshTokens = [];
 // const corsOptions ={
 //   origin:'*', 
@@ -428,6 +428,6 @@ app.get("/api/allocated",async (req,res)=>{
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
-app.listen(PORT, () => {
-    console.log("Listening on port "+PORT);
+app.listen(port, () => {
+    console.log("Listening on port "+port);
 });
