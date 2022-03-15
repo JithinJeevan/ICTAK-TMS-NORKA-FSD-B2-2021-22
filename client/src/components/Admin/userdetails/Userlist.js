@@ -79,10 +79,10 @@ useEffect(()=>{
 //rejecting
  async function fetchdelete(e){ 
     const id=e.target.id;
-    const token= Cookies.get("access")
+    
     console.log("deleted",id);
     setIsSubmit(true)
-    console.log("new token",token);
+    
     let res= await axiosJWT.post(`/api/user/delete/${id}`,
     {headers:{authorization: "Bearer "+ accessToken}})
     console.log("deleted",res);
@@ -203,7 +203,7 @@ navigate("/",{replace:true});
                 <TableRow key={key} style={{backgroundColor:'white'}}>
                     <TableCell>{i.fname+" "+i.sname}</TableCell>
                     <TableCell>{i.quali}</TableCell>
-                    <TableCell>{i.skill}</TableCell>
+                    <TableCell>{i.skill+" "}</TableCell>
                     <TableCell>{i.org}</TableCell>
                     <TableCell>{i.job}</TableCell>
                     <TableCell>

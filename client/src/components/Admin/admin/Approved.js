@@ -67,8 +67,8 @@ console.log("access",accessToken);
 
 async function searching(){
     active.map((i)=>{
-      const name = i.fname+i.sname;
-if(name===search){
+      const fullname = i.fname+i.sname;
+if(fullname===search){
     console.log("find");
     setActive(active.filter(el=>el.fname+el.sname === search));  
 }
@@ -137,7 +137,7 @@ useEffect(()=>{
                     <TableCell>{i.skill+" "}</TableCell>
                     
                     <TableCell><CustomizedDialogs><Allocation item={i}/></CustomizedDialogs></TableCell>
-                    <TableCell ><Button variant="contained" color="error" value={i.username} onClick={(e)=>deleteApproved(e.target.value)}></Button>Delete</TableCell>
+                    <TableCell ><Button style={{maxHeight:'2.5em',minHeight:'2.5em'}} variant="contained" color="error" value={i.username} onClick={(e)=>deleteApproved(e.target.value)}>Delete</Button></TableCell>
                 </TableRow>
                   ))}
               </TableBody>

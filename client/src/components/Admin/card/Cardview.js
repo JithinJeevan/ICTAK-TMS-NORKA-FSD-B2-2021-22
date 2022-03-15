@@ -37,7 +37,7 @@ export default function BasicModal(props) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-         <img className="cardimg" style={{width: 100,height: 100}} src={newone}/>
+         
           <div className="cardcontent">
           <Typography className="cardname" id="modal-modal-title" variant="h5" component="h2">{item.uname}</Typography>
           <Typography id="modal-modal-title" style={{color: 'blue'}}>Batch: {item.batch}</Typography>

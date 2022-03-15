@@ -79,12 +79,19 @@ function UserLogin(props) {
     
     console.log("use",loginValues.username);
     
+
+    var [Sign,setSign]=useState("");
      function redirected(){  
         
     //    console.log(formValues.username);
     //    console.log(username);
     console.log("full",loginValues.id);
-       if( loginValues && (loginValues.username==formValues.username)) {
+    if( loginValues.id=="621c90a152ec1005d7ca5645") {
+
+        setSign("Please go to Admin Login")
+          
+       }
+     else if( loginValues && (formValues.username!='admin' && loginValues.username==formValues.username)) {
         Cookies.set('log',2); 
         // props.setLogInfo(Cookies.get("log")) ;
        
@@ -94,10 +101,10 @@ function UserLogin(props) {
        }
     
     
-       
-       else
+       else  if(loginValues=='Invalid Credentials') 
        {  navigate("#",{replace:true});
        console.log("Invalid login");
+       setSign("Invalid login");
     }
     }
     
@@ -121,6 +128,8 @@ function UserLogin(props) {
                             <input type="password" name="password" placeholder="Password" required="" value={formValues.password} onChange={handleChange} />
                             { isSubmit &&  loginValues.status==="Authentication failed" ?(<h3>Invalide credentials</h3>):(<h3></h3>)}
                             <button>Sign In</button>
+                            <br></br>
+                            <h3>{Sign}</h3>
                     </form>
                 </div>
                  

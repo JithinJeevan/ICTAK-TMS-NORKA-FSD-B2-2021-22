@@ -24,12 +24,13 @@ function Signup(props) {
     const [formErrorValues, setFormErrorValues] = useState({});
     var [Values, setValues] = useState();
     
+    
     var [display,setDisplay]=useState(null);
     // Flag for Form Submission Status
     const [isSubmit, setIsSubmit] = useState(false); 
 
     console.log(formValues);
-    console.log(course);
+    console.log("check",Values);
     
     // Manage Field Change
     const  handleChange = (event) => {
@@ -51,37 +52,38 @@ function Signup(props) {
         event.preventDefault();
         setFormErrorValues(validation(formValues));
         setIsSubmit(true);
-        console.log(Values);
-        nullify();
+        axios.post('/api/register',{formValues,course,approval})
+        .then((response)=>
+        {
+          console.log("response db",response.data);
+          
+            setValues(response.data);
+        
+        })
+
+        setFormValues({ username: "",fname: "",sname: "", email: "",
+                password: "",job:"",org:'' ,skill:'' ,quali:"",});
+            setCourse(null);
+        
     }
 
     useEffect(() => {
          
-            register();
+      nullify();
         
-    }, [formErrorValues]);
+    }, [Values]);
 
     function register(){
 
         
-            axios.post('/api/register',{formValues,course,approval})
-            .then((response)=>
-            {
-              console.log(response.data);
-              
-                setValues(response.data);
-              
-                
-        
-            })
+           
 
-            setFormValues({ username: "",fname: "",sname: "", email: "",
-                password: "",job:"",org:'' ,skill:'' ,quali:"",});
-            setCourse(null);
+            
           }
 
           function nullify(){
-            if(isSubmit && formValues.username==Values.username){
+           
+           if(Values =="Success" && formValues.fname==''){
 
               setDisplay("Registration Successfull");
                 setFormValues({ username: "",fname: "",sname: "", email: "",
@@ -91,12 +93,19 @@ function Signup(props) {
               setIsSubmit(false);
 
             }
+          
 
-            if(isSubmit && Values=='Username or Email already exists' ){
+          else  if((Values=='Username or Email already exists') && formValues.fname=='' ){
               setDisplay("Username or Email already exists")
               setIsSubmit(false);
             }
+            else if(formValues.fname!=''){
+              setDisplay("");
+            }
           }
+
+
+
     return (
         <div>
           

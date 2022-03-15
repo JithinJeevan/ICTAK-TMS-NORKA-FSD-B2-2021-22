@@ -115,7 +115,7 @@ async function handleSignOUt(){
         
             
             <FormControl variant="standard">
-            <Input className="searchsh" value={search} style={{width: 300,backgroundColor: "white",paddingLeft: 10,borderRadius: 20}} id="input-with-icon-adornment"
+            <Input className="searchsh" value={search} style={{width: 300,backgroundColor: "white",paddingLeft: 10}} id="input-with-icon-adornment"
             endAdornment={<InputAdornment><SearchIcon onClick={searching} style={{cursor:'pointer'}}/></InputAdornment>}
             onChange={(event)=>setSearch(event.target.value)}/>
             </FormControl>
@@ -143,7 +143,7 @@ async function handleSignOUt(){
               <TableCell>{i.endtime}</TableCell>
               <TableCell>{i.day}</TableCell>
               <TableCell><BasicModal item={i}></BasicModal></TableCell>
-              <TableCell ><Button variant="contained" color="error" id={i._id} onClick={deleteSchedule}></Button>Delete</TableCell>
+              <TableCell ><Button style={{maxHeight:'2.6em',minHeight:'2.6em'}} variant="contained" color="error" id={i._id} onClick={deleteSchedule}>Delete</Button></TableCell>
               </TableRow>
                   ))}
               </TableBody>

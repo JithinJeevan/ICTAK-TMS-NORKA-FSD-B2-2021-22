@@ -123,7 +123,7 @@ app.post("/api/refresh", (req, res) => {
         console.log(user);
         var result = await user.save();
         
-        res.json({status:"Success"});
+        res.send("Success");
         
     } 
    

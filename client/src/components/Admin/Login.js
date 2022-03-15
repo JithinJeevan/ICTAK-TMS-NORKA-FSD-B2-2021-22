@@ -96,14 +96,14 @@ function Login(props) {
           console.log("Admin Login");
           setIsSubmit(false)
        }
-     else  if(isSubmit &&  formValues.username!='admin' && formValues.username===username) {
+     else  if( formValues.username!='admin' && formValues.username===username) {
            
             setSign("Please go to User Login")
             setIsSubmit(false)
            
         }
 
-        else  if((isSubmit==true) &&  (username=='')) {
+        else  if(loginValues=='Invalid Credentials') {
            
             setSign("Invalid Login credentials")
             setIsSubmit(false)
@@ -135,7 +135,7 @@ function Login(props) {
                             
                             
                             <input type="password" name="password" placeholder="Password" required="" value={formValues.password} onChange={handleChange} />
-                            { isSubmit &&  loginValues.status==="Authentication failed" ?(<h3>Invalide credentials</h3>):(<h3></h3>)}
+                            
                             <button>Sign In</button>
                             <br></br>
                             <h3>{Sign}</h3>

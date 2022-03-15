@@ -35,8 +35,9 @@ const Allocation = (props) => {
 
    Cookies.set("access", accessToken);
    Cookies.set("refresh", refreshToken);
-  console.log("access",accessToken);
-
+  console.log("access",startdate);
+  var today = new Date();
+  console.log("today",today);
     const refresh = async () => {
         try {
         const res = await axios.post("/api/refresh",{ token: Cookies.get("refresh")});
@@ -125,10 +126,11 @@ async function allocated(){
                 </Select>
                 </span><br/><br/>
                 <TextField type="time" size="small" label="Start time" style = {{width: 150}} name="starttime" focused value={time} onChange={(e)=>setTime(e.target.value)} variant="filled"/>
-                <TextField type="time"  size="small" label="End time" style = {{width: 150}} name="endtime" focused value={eTime} onChange={(e)=>setETime(e.target.value)} variant="filled"/>
-             
                 <span className="text2">
-                <Select variant="filled" value={day} displayEmpty onChange={(e)=>setDay(e.target.value)} size="small" style = {{width: 200}}>
+                <TextField type="time"  size="small" label="End time" style = {{width: 150}} name="endtime" focused value={eTime} onChange={(e)=>setETime(e.target.value)} variant="filled"/>
+                </span>
+                <span className="text2">
+                <Select variant="filled" value={day} displayEmpty onChange={(e)=>setDay(e.target.value)} size="small" style = {{width: 230}}>
                 <MenuItem value="" disabled>day</MenuItem>
                 <MenuItem value="sunday">sundays</MenuItem>
                 <MenuItem value="monday">mondays</MenuItem>

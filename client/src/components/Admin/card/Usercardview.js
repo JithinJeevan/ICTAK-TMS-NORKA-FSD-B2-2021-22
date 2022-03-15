@@ -34,14 +34,13 @@ export default function BasicModal(props) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}  style={{}}>
-        <img src={newone} style={{width: 100,height: 100}}/>
+        
         <div style={{marginLeft: 150,marginTop: -100}}>
         <Typography id="modal-modal-title" variant="h5" component="h2" style={{color: 'blue'}}>{item.uname}</Typography>
           <Typography id="modal-modal-title" style={{color: 'blue'}}>Email:  {item.email}</Typography>
-          <Typography id="modal-modal-title" style={{color: 'blue'}}>Contactno:  {item.phone}</Typography>
-          <Typography id="modal-modal-title" style={{color: 'blue'}}>qualification:  {item.quali}</Typography>
-          <Typography id="modal-modal-title" style={{color: 'blue'}}>Skills:  {item.skill}</Typography>
-          <Typography id="modal-modal-title" style={{color: 'blue'}}>company:  {item.org}</Typography>
+          <Typography id="modal-modal-title" style={{color: 'blue'}}>Qualification:  {item.quali}</Typography>
+          <Typography id="modal-modal-title" style={{color: 'blue'}}>Skills:  {item.skill+" "}</Typography>
+          <Typography id="modal-modal-title" style={{color: 'blue'}}>Company:  {item.org}</Typography>
           <Typography id="modal-modal-title" style={{color: 'blue'}}>Designation: {item.job} </Typography>
         </div>
          
