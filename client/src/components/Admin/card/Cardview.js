@@ -38,7 +38,7 @@ export default function BasicModal(props) {
       >
         <Box sx={style}>
          
-          <div className="cardcontent">
+          <div className="cardcontent" >
           <Typography className="cardname" id="modal-modal-title" variant="h5" component="h2">{item.uname}</Typography>
           <Typography id="modal-modal-title" style={{color: 'blue'}}>Batch: {item.batch}</Typography>
           <Typography id="modal-modal-title" style={{color: 'blue'}}>Course: {item.course}</Typography>

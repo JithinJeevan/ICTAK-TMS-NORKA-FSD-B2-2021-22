@@ -7,7 +7,7 @@ const Home = () => {
 	return (
 		<>
 			<Newsection />
-			
+			<Footer/>
 		</>
 	);
 };

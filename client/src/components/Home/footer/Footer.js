@@ -28,7 +28,7 @@ const Footer = () => {
 			</div>
 			<section className='social-media'>
 				<div className='social-media-wrap'>
-					<div className='footer-logo'>
+					<div className='footer-logo' style={{top:'10px',position:"relative"}}>
 						<Link to='/' className='social-logo'>
 							ICTAK-TMS
 						</Link>

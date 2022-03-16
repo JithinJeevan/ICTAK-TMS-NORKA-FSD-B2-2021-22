@@ -1,5 +1,5 @@
 .footer-container {
-	background-color: #5a595a6b;
+	background-color: #45454781;
 	padding: 4rem 0 2rem 0;
 	display: flex;
 	flex-direction: column;
@@ -114,6 +114,8 @@
 	justify-content: space-between;
 	align-items: center;
 	width: 150px;
+	top: 10px;
+	position: relative;
 }
 
 .social-logo {
